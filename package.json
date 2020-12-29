@@ -1,53 +1,38 @@
 {
-  "name": "netease-music",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --mode development",
-    "build": "vue-cli-service build --mode production",
-    "build:linux" : "vue-cli-service build --mode linux",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
-  },
-  "dependencies": {
-    "axios": "^0.21.0",
-    "core-js": "^3.6.5",
-    "vant": "^3.0.0-beta.7",
-    "vue": "^3.0.0",
-    "vue-class-component": "^8.0.0-0",
-    "vue-router": "^4.0.0-0",
-    "vuex": "^4.0.0-0"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.19",
-    "@typescript-eslint/eslint-plugin": "^2.33.0",
-    "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-plugin-vuex": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
-    "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^2.0.0-0",
-    "babel-plugin-import": "^1.13.1",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0-0",
-    "lint-staged": "^9.5.0",
-    "sass": "^1.26.5",
-    "sass-loader": "^8.0.2",
-    "typescript": "~3.9.3",
-    "vue-jest": "^5.0.0-0"
+    "start": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi generate tmp",
+    "prettier": "prettier --write '**/*.{js,jsx,tsx,ts,less,md,json}'",
+    "test": "umi-test",
+    "test:coverage": "umi-test --coverage"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,vue,ts,tsx}": [
-      "vue-cli-service lint",
-      "git add"
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
     ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^6.5.0",
+    "@umijs/preset-react": "1.x",
+    "umi": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "@umijs/test": "^3.3.3",
+    "lint-staged": "^10.0.7",
+    "prettier": "^2.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "typescript": "^4.1.2",
+    "yorkie": "^2.0.0"
   }
 }

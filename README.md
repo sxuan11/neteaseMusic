@@ -1,29 +1,15 @@
-# netease-music
+# umi project
 
-## Project setup
-```
-yarn install
-```
+## Getting Started
 
-### Compiles and hot-reloads for development
-```
-yarn serve
+Install dependencies,
+
+```bash
+$ yarn
 ```
 
-### Compiles and minifies for production
-```
-yarn build
-```
+Start the dev server,
 
-### Run your unit tests
+```bash
+$ yarn start
 ```
-yarn test:unit
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
