@@ -2,6 +2,8 @@ import { defineConfig } from 'umi';
 import routes from './routes';
 import proxy from './proxy';
 
+const path = require('path');
+
 const { NODE_ENV }: any = process.env;
 
 console.log(NODE_ENV);
@@ -18,6 +20,14 @@ export default defineConfig({
   manifest: {
     basePath: '/',
   },
+  theme: {
+    '@primary-color': '#EB5544',
+    '@link-color': '#EB5544',
+    '@border-radius-base': '2px',
+  },
+  cssLoader: {
+    localsConvention: 'camelCase',
+  },
   extraPostCSSPlugins: [
     require('postcss-flexbugs-fixes'),
     require('postcss-px-to-viewport')({
@@ -29,4 +39,7 @@ export default defineConfig({
       mediaQuery: false, // 允许在媒体查询中转换`px`
     }),
   ],
+  alias: {
+    assets: '@/assets',
+  },
 });

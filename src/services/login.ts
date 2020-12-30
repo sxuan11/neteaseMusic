@@ -1,15 +1,16 @@
 import request from '@/utils/request';
 
 export type LoginParamsType = {
-  username: string;
-  password: string;
-  mobile: string;
-  captcha: string;
-  type: string;
+  phone: string;
+  ctcode?: string;
 };
 
+/**
+ * 验证码
+ * @param params
+ */
 export async function accountLogin(params: LoginParamsType) {
-  return request('/api/login/account', {
+  return request('/captcha/sent', {
     method: 'POST',
     data: params,
   });

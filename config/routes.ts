@@ -7,6 +7,21 @@ export default [
         path: '/user/login',
         component: './User/login',
       },
+      {
+        name: 'emailLogin',
+        path: '/user/login/email',
+        component: './User/emailLogin',
+      },
+      {
+        name: 'phoneLogin',
+        path: '/user/login/phone',
+        component: './User/phoneLogin',
+      },
+      {
+        name: 'checkPhoneLogin',
+        path: '/user/login/checkPhoneLogin',
+        component: './User/checkPhoneLogin',
+      },
     ],
   },
   {

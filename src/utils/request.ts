@@ -4,6 +4,7 @@
  */
 import { extend } from 'umi-request';
 import { notification } from 'antd';
+import type { ResponseError } from 'umi-request';
 
 const codeMessage: Object = {
   200: '服务器成功返回请求的数据。',
@@ -26,16 +27,26 @@ const codeMessage: Object = {
 /**
  * 异常处理程序
  */
-const errorHandler = (error: { response?: {} | undefined }) => {
-  const { response = {} } = error;
-  // @ts-ignore
-  const errortext = codeMessage[response.status] || response.statusText;
-  const { status, url }: any = response;
+const errorHandler = (error: ResponseError) => {
+  const { response } = error;
+  if (response && response.status) {
+    // @ts-ignore
+    const errorText = codeMessage[response.status] || response.statusText;
+    const { status, url } = response;
 
-  notification.error({
-    message: `请求错误 ${status}: ${url}`,
-    description: errortext,
-  });
+    notification.error({
+      message: `请求错误 ${status}: ${url}`,
+      description: errorText,
+    });
+  }
+
+  if (!response) {
+    notification.error({
+      description: '您的网络发生异常，无法连接服务器',
+      message: '网络异常',
+    });
+  }
+  throw error;
 };
 
 /**
