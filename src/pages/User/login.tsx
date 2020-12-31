@@ -20,7 +20,7 @@ const LoginForm: React.FC = () => {
         shape="round"
         onClick={toPhoneLogin}
       >
-        <div className={`font_red font_bold`}>手机号登录</div>
+        <div className={`font-red font-bold`}>手机号登录</div>
       </Button>
       <Button
         size={'large'}
@@ -28,7 +28,7 @@ const LoginForm: React.FC = () => {
         shape="round"
         onClick={toEMailLogin}
       >
-        <div className={`font_red font_bold`}>网易邮箱登录</div>
+        <div className={`font-red font-bold`}>网易邮箱登录</div>
       </Button>
     </div>
   );
