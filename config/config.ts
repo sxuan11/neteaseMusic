@@ -11,6 +11,9 @@ console.log(NODE_ENV);
 export default defineConfig({
   hash: true,
   antd: {},
+  dva: {
+    immer: true,
+  },
   // umi routes: https://umijs.org/docs/routing
   routes,
   title: false,

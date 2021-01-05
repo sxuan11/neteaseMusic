@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
-import { accountLogin2 } from '@/services/login';
+import {} from '@/services/login';
 import { history } from 'umi';
 import styles from './index.less';
 
 const WelcomeToHome: React.FC = () => {
-  function login() {
-    console.log(123);
-    accountLogin2().then((res: any) => {
-      console.log(res);
-    });
-  }
-
   useEffect(() => {
     setTimeout(() => {
       history.push('/user/login');

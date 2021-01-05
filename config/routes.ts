@@ -22,6 +22,11 @@ export default [
         path: '/user/login/checkPhoneLogin',
         component: './User/checkPhoneLogin',
       },
+      {
+        name: 'name',
+        path: '/user/login/name',
+        component: './User/name',
+      },
     ],
   },
   {

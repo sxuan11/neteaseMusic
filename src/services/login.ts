@@ -5,6 +5,11 @@ export type LoginParamsType = {
   ctcode?: string;
 };
 
+export type LoginEmailParamsType = {
+  email: string;
+  md5_password: string;
+};
+
 /**
  * 验证码
  * @param params
@@ -16,8 +21,9 @@ export async function accountLogin(params: LoginParamsType) {
   });
 }
 
-export async function accountLogin2() {
-  return request('/playlist/hot', {
+export async function emailLogin(params: LoginEmailParamsType) {
+  return request('/login', {
     method: 'POST',
+    data: params,
   });
 }
