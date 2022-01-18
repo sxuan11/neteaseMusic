@@ -2,7 +2,7 @@
   "name": "netease",
   "version": "1.0.0",
   "description": "this is a music player",
-  "main": "main.js",
+  "main": "src/electron/main.js",
   "scripts": {
     "dev": "vite",
     "start": "cross-env NODE_ENV=dev electron-forge start",
@@ -31,10 +31,11 @@
     "vue-tsc": "^0.29.8"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0",
     "axios": "^0.24.0",
+    "electron-squirrel-startup": "^1.0.0",
     "lodash": "^4.17.21",
     "vue": "^3.2.25",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
   }
 }

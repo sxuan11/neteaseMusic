@@ -1,0 +1,17 @@
+@mixin electron-drag {
+  -webkit-user-select: none;
+  -webkit-app-region: drag
+}
+
+@mixin electron-no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.ele-drag {
+  -webkit-user-select: none;
+  -webkit-app-region: drag
+}
+
+.ele-no-drag {
+  -webkit-app-region: no-drag;
+}

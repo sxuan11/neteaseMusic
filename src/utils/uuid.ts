@@ -1,4 +1,4 @@
-function getUUID(x = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", t = 0) {
+export function getUUID(x = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", t = 0): string {
   return x.replace(/[xy]/g, function (x) {
     let r = 16 * Math.random() | 0,
       n = "x" === x ? r : 3 & r | 8;
@@ -8,4 +8,3 @@ function getUUID(x = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", t = 0) {
   })
 }
 
-console.log(getUUID());

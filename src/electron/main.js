@@ -1,11 +1,13 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, Menu } = require('electron');
 
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false,
     webPreferences: {
-      devTools: true
+      devTools: true,
+      nodeIntegration: true,
     }
   })
   process.env.NODE_ENV === 'dev' ? win.loadURL('http://localhost:3000') : win.loadFile('./dist/index.html')
@@ -15,6 +17,7 @@ function createWindow () {
 app.whenReady().then(() => {
   createWindow()
 
+  Menu.setApplicationMenu(null);
   app.on('activate',  ()=> {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })

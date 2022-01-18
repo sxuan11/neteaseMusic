@@ -6,6 +6,48 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1304893",
+      "name": "邮件",
+      "font_class": "youjian",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "3366115",
+      "name": "设置",
+      "font_class": "shezhi",
+      "unicode": "e663",
+      "unicode_decimal": 58979
+    },
+    {
+      "icon_id": "3368812",
+      "name": "最小化",
+      "font_class": "zuixiaohua",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "3368827",
+      "name": "标准大小",
+      "font_class": "zuixiaohua1",
+      "unicode": "e66a",
+      "unicode_decimal": 58986
+    },
+    {
+      "icon_id": "3368838",
+      "name": "最大化",
+      "font_class": "zuidahua",
+      "unicode": "e66b",
+      "unicode_decimal": 58987
+    },
+    {
+      "icon_id": "3368839",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
       "icon_id": "2767689",
       "name": "推荐歌单",
       "font_class": "icon-",

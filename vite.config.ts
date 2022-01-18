@@ -9,5 +9,12 @@ export default defineConfig({
       '@': 'src/'
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "./src/assets/css/global.scss";`
+      }
+    }
+  },
   base: './'
 })
