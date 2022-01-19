@@ -9,13 +9,22 @@
     </div>
     <div class="flex">
       <div
-          class="w-4 icon iconfont icon-icon-22 mx-4 text-gray-400 text-6xl cursor-pointer"
+          class="w-4 icon iconfont icon-icon-22 mx-4 text-gray-400 text-6xl cursor-pointer ele-no-drag"
           @click="showLogin">
       </div>
       <template v-if="isElectron()">
         <div
-            class="w-4 icon iconfont icon-zuixiaohua mx-4 text-gray-400 text-6xl cursor-pointer"
+            class="w-4 icon iconfont icon-zuixiaohua mx-4 text-gray-400 text-6xl cursor-pointer ele-no-drag"
             @click="miniWindow">
+        </div>
+        <div
+            class="w-4 icon iconfont mx-4 text-gray-400 text-6xl cursor-pointer ele-no-drag"
+            :class="isMax ? 'icon-zuixiaohua1' : 'icon-zuidahua'"
+            @click="maxWindow">
+        </div>
+        <div
+            class="w-4 icon iconfont icon-guanbi mx-4 text-gray-400 text-6xl cursor-pointer ele-no-drag"
+            @click="closeWindow">
         </div>
       </template>
     </div>
@@ -28,26 +37,35 @@
 <script setup lang="ts">
 import Login from '../login/index.vue';
 import {isElectron} from '../../utils/isElectron'
-import {computed, onMounted, ref} from "vue";
+import {onMounted, ref} from "vue";
 import {useStore} from "vuex";
+import {throttle} from 'lodash-es'
 
 const store = useStore();
-const eleApp = computed(() => {
-  return store.state.app
-})
 
 const loginRef = ref();
 const showLogin = () => {
   loginRef.value.showLogin();
 }
 
-onMounted(() => {
-  console.log(isElectron());
+const miniWindow = () => {
+  store.commit('electron/miniWindow');
+}
+
+let isMax = ref(false);
+const maxWindow = async () => {
+  isMax.value = await store.state.electron.ipc.ipcRenderer.invoke('win-isMaximized');
+  store.commit('electron/maxOrUnmaxWindow', isMax.value);
+}
+const checkIsMax = async () => {
+  isMax.value = await store.state.electron.ipc.ipcRenderer.invoke('win-isMaximized')
+}
+isElectron() && onMounted(() => {
+  window.addEventListener('resize', throttle(checkIsMax, 1000));
 })
 
-const miniWindow = () => {
-  console.log('miniwindow');
-  console.log(eleApp);
+const closeWindow = () => {
+  store.commit('electron/closeWindow');
 }
 </script>
 

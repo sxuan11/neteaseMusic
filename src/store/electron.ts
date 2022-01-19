@@ -1,12 +1,23 @@
 export default {
+  namespaced: true,
+
   state() {
     return {
-      app: ''
+      ipc: ''
     }
   },
   mutations: {
-    setApp(state, data) {
-      state.app = data;
+    setEleIpc(state, data) {
+      state.ipc = data;
+    },
+    miniWindow(state) {
+      state.ipc.ipcRenderer.send('win-min-window');
+    },
+    maxOrUnmaxWindow(state, isMax) {
+      state.ipc.ipcRenderer.send('win-max-unmax-window', isMax);
+    },
+    closeWindow(state) {
+      state.ipc.ipcRenderer.send('win-close-window');
     }
   }
 }
