@@ -45,7 +45,7 @@ const store = useStore();
 
 const loginRef = ref();
 const showLogin = () => {
-  loginRef.value.showLogin();
+  store.commit('electron/openLoginPage');
 }
 
 const miniWindow = () => {

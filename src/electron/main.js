@@ -1,4 +1,4 @@
-const { app, BrowserWindow, Menu } = require('electron');
+const { app, BrowserWindow, Menu, BrowserView } = require('electron');
 const path = require("path");
 const { startListener } = require('./ipcMain')
 let win;

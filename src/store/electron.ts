@@ -18,6 +18,12 @@ export default {
     },
     closeWindow(state) {
       state.ipc.ipcRenderer.send('win-close-window');
+    },
+    openLoginPage(state) {
+      state.ipc.ipcRenderer.send('win-openWindow-login');
+    },
+    closeLoginWindow(state) {
+      state.ipc.ipcRenderer.send('win-closeWindow-login');
     }
   }
 }
