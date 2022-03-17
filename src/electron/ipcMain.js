@@ -1,4 +1,5 @@
 const { ipcMain, BrowserWindow, BrowserView } = require('electron')
+const path = require("path");
 let loginChild;
 
 function startListener(win) {
@@ -36,7 +37,12 @@ function startListener(win) {
       parent: win,
       frame: false,
       width: 437,
-      height: 662
+      height: 662,
+      webPreferences: {
+        devTools: true,
+        nodeIntegration: true,
+        preload: path.join(__dirname, './preload.js')
+      }
     })
     process.env.NODE_ENV === 'dev' ? await loginChild.loadURL('http://localhost:8080/#/login') : await loginChild.loadFile('./dist/index.html/#/login')
   })
@@ -44,6 +50,7 @@ function startListener(win) {
    * 关闭登录子窗口
    */
   ipcMain.on('win-closeWindow-login', async (event) => {
+    console.log('win-closeWindow-login');
     loginChild.close();
   })
 }

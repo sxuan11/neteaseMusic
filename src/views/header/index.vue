@@ -30,22 +30,24 @@
     </div>
   </div>
   <teleport to="body">
-    <Login ref="loginRef"/>
+    <Login v-if="true" ref="loginRef"/>
   </teleport>
 </template>
 
 <script setup lang="ts">
 import Login from '../login/index.vue';
-import {isElectron} from '../../utils/isElectron'
-import {onMounted, ref} from "vue";
-import {useStore} from "vuex";
-import {throttle} from 'lodash-es'
+import { isElectron } from '../../utils/isElectron'
+import { onMounted, ref } from "vue";
+import { useStore } from "vuex";
+import { throttle } from 'lodash-es'
 
 const store = useStore();
 
 const loginRef = ref();
+let isShowLogin = ref(false);
 const showLogin = () => {
-  store.commit('electron/openLoginPage');
+  isShowLogin.value = true
+  // store.commit('electron/openLoginPage');
 }
 
 const miniWindow = () => {
@@ -53,10 +55,12 @@ const miniWindow = () => {
 }
 
 let isMax = ref(false);
+// 最大化窗口
 const maxWindow = async () => {
   isMax.value = await store.state.electron.ipc.ipcRenderer.invoke('win-isMaximized');
   store.commit('electron/maxOrUnmaxWindow', isMax.value);
 }
+// 检查是否是最大化窗口
 const checkIsMax = async () => {
   isMax.value = await store.state.electron.ipc.ipcRenderer.invoke('win-isMaximized')
 }
